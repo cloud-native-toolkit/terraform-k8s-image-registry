@@ -1,4 +1,5 @@
 name: k8s-image-registry
+alias: registry
 type: terraform
 description: Sets up an external image registry for use within the cluster
 tags:
@@ -34,3 +35,17 @@ versions:
         id: namespace
         output: name
         discriminator: tools
+    - name: gitops_dir
+      scope: global
+    - name: registry_namespace
+      scope: global
+    - name: registry_host
+      scope: global
+    - name: registry_url
+      scope: global
+    - name: registry_user
+      scope: global
+    - name: registry_password
+      scope: global
+    - name: apply
+      scope: ignore
