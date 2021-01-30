@@ -1,7 +1,7 @@
-# OCP Image Registry terraform module
+# Image Registry terraform module
 
-Terraform module to set up the cluster to use the internal OCP Image Registry for CI pipelines. The module creates
-the configmap and secret in the provided namespace and creates the ConsoleLink.
+Terraform module to set up the cluster to use an external image registry for CI pipelines. The module creates
+the configmap and secret in the provided namespace and creates the ConsoleLink on ocp 4.x.
 
 ## Software dependencies
 
@@ -14,7 +14,6 @@ The module depends on the following software components:
 
 ### Terraform providers
 
-- IBM Cloud provider >= 1.5.3
 - Helm provider >= 1.1.1 (provided by Terraform)
 
 ## Module dependencies
@@ -28,7 +27,7 @@ This module makes use of the output from other modules:
 
 ```hcl-terraform
 module "registry" {
-  source = "github.com/ibm-garage-cloud/terraform-ocp-image-registry"
+  source = "github.com/ibm-garage-cloud/terraform-k8s-image-registry"
 
   config_file_path = module.dev_cluster.config_file_path
   registry_namespace = "ibmgaragecloud"
@@ -39,4 +38,3 @@ module "registry" {
   cluster_namespace = module.dev_capture_tools_state.namespace
 }
 ```
-
